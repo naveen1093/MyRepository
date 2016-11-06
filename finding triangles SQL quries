@@ -1,0 +1,15 @@
+Find the number of triangles
+
+
+// optimized solution workes best, gives n(n-1)(n-2)/6 traingles with n vertices
+
+drop view IF EXISTS e1; drop view IF EXISTS e2; drop view IF EXISTS e3; create view e1 as select * from complete5 where i < j; create view e2 as select * from complete5 where i < j; create view e3 as select * from complete1m where i > j; select count(*) from  e1 join e2  on (e1.j = e2.i) join e3  on (e2.j = e3.i) where e3.j = e1.i;
+
+// optimized but not as good as first one, gives n(n-1)(n-2)/6 traingles with n vertices
+
+select count(*) from complete1m e1 join complete1m e2 on e1.j = e2.i and e1.i < e2.i join complete1m e3 on e2.j = e3.i and e3.j = e1.i and e2.i < e3.i;
+
+
+// standared query, not optimized, gives , gives (n(n-1)(n-2)/6)*3! traingles with n vertices
+
+select count(*) from complete1m g1 join complete1m g2 on g1.j=g2.i join complete1m g3 on g2.j=g3.i and g3.j=g1.i ;
