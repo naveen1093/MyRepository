@@ -1,0 +1,33 @@
+public class SecondLargestNumber {
+    public static void main(String args[]){
+        int[] a = {3,4,2,69,2,7,2,6,72,45};
+        int largest = a[0];
+        int second =0, number;
+        for(int i = 0;i<a.length;i++){
+            number = a[i];
+            if(number > largest){
+                second = largest;
+                largest = number;
+            }else{
+                if(number > second){
+                    second = number;      
+                }
+            }
+        }
+        System.out.println(second);
+        
+      /*  largest := numbers[0];
+secondLargest := null
+for i=1 to numbers.length-1 do
+    number := numbers[i];
+    if number > largest then
+        secondLargest := largest;
+        largest := number;
+    else
+        if number > secondLargest then
+            secondLargest := number;
+        end;
+    end;
+end; */
+    }
+}
