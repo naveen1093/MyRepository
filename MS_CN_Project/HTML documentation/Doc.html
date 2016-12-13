@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Distributed Storage Solution-Monitor Interpretations</title>
+<link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
+<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet"
+        type="text/css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prettify.css">
+</head>
+<body>
+<div class="wrapper">
+<nav>
+
+  	<div class="pull-left">
+    </div>
+
+    <div class="pull-right">
+    </div>
+
+</nav>
+<header>
+  <div class="container">
+    <h1 class="lone-header"><b>DISTRIBUTED STORAGE WITH LOAD BALANCING-MONITOR INTERPRETATIONS- Saikiran Goud Burra </b></h1>
+  </div>
+</header>
+
+    <div class="docs-content">
+      <h3 id="introduction"> Introduction</h3>
+
+      <p>This project builds a system that provides storage system that uses sharding and replication to improve robustness of the storage service.
+         The system shares key ideas in its design with some of the online storage/file sharing systems except that it is simplified.The project uses shards as partitions of data.
+         There could be many reasons for sharding. A widely used reason is to put different parts of the dataset on different servers to optimize download and upload speeds.
+         The network may be a bottleneck to a single server. The project is an implementation in Python.In many distributed systems, such as storage systems in the cloud,
+         the same data is copied to multiple servers in multiple geographical locationsSuch copies of data are called replicas.They provide redundancy and reliability to system,
+          i.e., if one copy of the data is lost, we still have another copy.In this project, we will have each shard split the data it receives for storage into two pieces and copy them to the remaining two servers.
+          That way, if a shard crashes, we have a copy of the data on the two remaining servers. The system will not be able to recover if more than one shard crashes.</p>
+
+      <p>This documentation focuses on the monitoring of this system. The monitor is rebuilt on the lines of a simple client that communicates with all partitions periodically,
+           to gather statistics about the metadatafile of each partition or shard. </p>
+
+           <p> The graph shows the upload and download of files under different conditions. For the first few iterations, the graph depicts upload of an image, then that very image is downloaded.
+             This is followed by another image after which one of the shards fails. </p>
+
+        <hr>
+
+        <div class="pull-left">
+        <div class="pull-right">
+    	<h1><a href="javascript:"><img src="img/graph.png" alt="Free Documentation Template Icon" /></a></h1>
+    </div>
+  </div>
+<hr>
+
+
+
+  <footer>
+    <div class="">
+      <p> &copy; Copyright Frittt Templates. All Rights Reserved.</p>
+    </div>
+  </footer>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/prettify/prettify.js"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="js/layout.js"></script>
+</body>
+</html>

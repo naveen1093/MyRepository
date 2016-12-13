@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Distributed Storage Solution-Shard implementation</title>
+<link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
+<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet"
+        type="text/css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prettify.css">
+</head>
+<body>
+<div class="wrapper">
+<nav>
+
+  	<div class="pull-left">
+    </div>
+
+    <div class="pull-right">
+    </div>
+
+</nav>
+<header>
+  <div class="container">
+    <h1 class="lone-header"><b>DISTRIBUTED STORAGE WITH LOAD BALANCING-SHARD IMPLEMENTATION- Saikiran Goud Burra</b></h1>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <ul class="docs-nav">
+      <li><strong>Introduction</strong></li>
+      <li class="separator"></li>
+      <li><strong>Shard Implementation</strong></li>
+      <li><a href="#rec_client" class="cc-active">rec_client</a></li>
+      <li><a href="#upload_files" class="cc-active">upload_file</a></li>
+      <li><a href="#backup_shard2" class="cc-active">backup_shard2</a></li>
+      <li class="separator"></li>
+      <li><strong>Client Implementation</strong></li>
+      <li><a href="#rec_shard" class="cc-active">rec_shard</a></li>
+      <li><a href="#balance_load" class="cc-active">balance_load</a></li>
+
+    </ul>
+    <div class="docs-content">
+      <h3 id="introduction"> Introduction</h3>
+
+      <p>This project builds a system that provides storage system that uses sharding and replication to improve robustness of the storage service.
+         The system shares key ideas in its design with some of the online storage/file sharing systems except that it is simplified.The project uses shards as partitions of data.
+         There could be many reasons for sharding. A widely used reason is to put different parts of the dataset on different servers to optimize download and upload speeds.
+         The network may be a bottleneck to a single server. The project is an implementation in Python.In many distributed systems, such as storage systems in the cloud,
+         the same data is copied to multiple servers in multiple geographical locationsSuch copies of data are called replicas.They provide redundancy and reliability to system,
+          i.e., if one copy of the data is lost, we still have another copy.In this project, we will have each shard split the data it receives for storage into two pieces and copy them to the remaining two servers.
+          That way, if a shard crashes, we have a copy of the data on the two remaining servers. The system will not be able to recover if more than one shard crashes.</p>
+
+      <h3 id="Shard_Implementation"> Shard Implementation</h3>
+      <p>The project uses three partitions or shards to store the data.Shard is responsible for storing the files.The implementation features of these can be found in the following sections.
+         The shards, when they receive an upload file, they split the file into two equal parts and upload the "backup" to the other two shards.</p>
+        <h3 id="rec_client"> rec_client</h3>
+        <p>This function enables listening and receiving data over the socket using standard networking protocols </p>
+        <ul>
+        <li>This function has to be called for each connection between the client and the storage system</li>
+        <li>A campact function for connection increases the clarity of the system</li>
+        </ul>
+        <h3 id="upload_files"> upload_file</h3>
+        <p> This function actually helps the shard save the file to its partition. </p>
+        <h3 id="backup_shard2"> backup_shard2</h3>
+        <p> This is a special function used to make sure that when backup of any odd number off data bytes is created,
+           no byte is lost while dividing the data into remaining partitions </p>
+        <ul>
+          <li>Always gives even number of back up Bytes to Shard1</li>
+          <li>Incase of odd number of backup bytes, adds the extra byte to shard2</li>
+        </ul>
+
+      <hr>
+
+      <h3 id="Client_Implementation"> Client Implementation</h3>
+      <ul>
+      <p>The project uses three partitions or shards to store the data. The client tries to balance the total amount of storage utilized on the shards.
+        The implementation features of these can be found in the following sections. </p>
+      </ul>
+      <h3 id="rec_shard"> rec_shard</h3>
+      <p>This function enables listening and receiving data over the socket using standard networking protocols on the client side </p>
+      <ul>
+      <li>This function has to be called for each connection between the client and the storage system</li>
+      <li>A campact function for connection increases the clarity of the system</li>
+      </ul>
+      <h3 id="balance_load"> balance_load</h3>
+      <p>This functionality is actually responsile for making sure that after each file upload by a client,
+        the number of bytes of data in each partition is as close to each other as possible. This is important for the following two reasons- </p>
+      <ul>
+      <li>No partition gets overcrowded with data and all traffic is efficiently divided between the partitions</li>
+      <li>Creating true partitioned backups is possible which would translate into complete
+          file backups incase all files are directed only towards a single partition</li>
+      </ul>
+
+<section class="vibrant centered">
+<div class="">
+    <h4> This documentation template is provided by <a href="http://www.frittt.com" target="_blank">Frittt Templates</a>. You can download and use this template for free. If you have used this template, please pay the developer's effort by Tweeting, sharing on Facebook, social mention or with a linkback. Enjoy! :)</h4>
+</div>
+</section>
+  <footer>
+    <div class="">
+      <p> &copy; Copyright Frittt Templates. All Rights Reserved.</p>
+    </div>
+  </footer>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/prettify/prettify.js"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="js/layout.js"></script>
+</body>
+</html>
