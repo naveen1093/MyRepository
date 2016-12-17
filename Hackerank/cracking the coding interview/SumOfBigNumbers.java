@@ -7,12 +7,11 @@ public class SumOfBigNumbers {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        BigInteger A = BigInteger.ZERO;
-        while(n-- > 0){
-        String str = sc.next();
-            A = A.add(new BigInteger(str));
+        BigInteger A = BigInteger.ZERO;     //long A=0L;
+        while(n-- > 0){       
+            A = A.add(BigInteger.valueOf(sc.nextInt()));     //A = A+sc.nextLong();
         }
         sc.close();
-        System.out.println(A.toString());
+        System.out.println(A.toString());       //System.out.println(A);
     }
 }
