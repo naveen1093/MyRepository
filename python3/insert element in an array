@@ -1,0 +1,17 @@
+n = int(input())
+A = [int(x) for x in input().split()]
+lenght = len(A)
+key = A[-1]
+j = lenght-2
+while ((j >= 0) and (A[j] > key)):
+    A[j+1] = A[j]
+    j = j - 1
+    #print(" ".join(str(x) for x in A))
+    for x in A:
+        print(x,end=" ")
+    print()
+A[j+1] = key
+print(" ".join(str(x) for x in A))
+#for x in A:
+#        print(x,end=" ")
+#   print()
