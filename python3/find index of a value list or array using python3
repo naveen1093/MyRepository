@@ -1,0 +1,6 @@
+value = int(input()) #value to find index in array
+n = int(input()) # capacity of array
+# a = [int(x) for x in input().split()]
+a = input().split()
+a = [int(x) for x in a]
+print(a.index(value))
