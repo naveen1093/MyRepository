@@ -1,0 +1,11 @@
+n = int(input())
+ar = [int(x) for x in input().split()]
+for i in range(n):
+    key = ar[i]
+    j = i-1
+    while ((j>=0) and (ar[j] > key)):
+        ar[j+1] = ar[j]
+        j = j-1
+    ar[j+1] = key
+    if i>0:
+        print(" ".join(str(x) for x in ar))
