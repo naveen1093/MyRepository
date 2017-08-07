@@ -1,0 +1,26 @@
+A non-empty zero-indexed array A consisting of N integers is given. Array A represents numbers on a tape.
+
+Any integer P, such that 0 < P < N, splits this tape into two non-empty parts: A[0], A[1], ..., A[P − 1] and A[P], A[P + 1], ..., A[N − 1].
+
+The difference between the two parts is the value of: |(A[0] + A[1] + ... + A[P − 1]) − (A[P] + A[P + 1] + ... + A[N − 1])|
+
+
+class Solution {
+    public int solution(int[] A) {
+        // write your code in Java SE 8
+        int len = A.length;
+        int min = Integer.MAX_VALUE;
+        int sum1 = 0;
+        int sum2 = 0;
+        for (int p : A)
+    sum2 += p;
+        for(int i=0;i<len-1;i++){
+            sum1 += A[i];
+            sum2 -= A[i];
+            
+                min = Math.min(Math.abs(sum1-sum2),min);
+            }
+            return min;
+    }
+}
+
